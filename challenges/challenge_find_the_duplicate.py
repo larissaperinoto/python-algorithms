@@ -5,33 +5,14 @@ def find_duplicate(nums):
 
     a = defaultdict(lambda: 0)
 
-    try:
-        for num in nums:
+    for num in nums:
 
-            if int(num) < 0:
-                raise TypeError
+        if type(num) == str or int(num) < 0:
+            return False
 
-            a[num] = a[num] + 1
-
-            if a[num] > 1:
-                return num
-
-        return False
-    except (TypeError, ValueError):
-        return False
-
-
-""" def create_dict(a, num):
-
-    if int(num) < 0:
-        raise TypeError
-
-    try:
         a[num] = a[num] + 1
 
-    except (KeyError):
+        if a[num] > 1:
+            return num
 
-        a[num] = 1
-
-    return a
- """
+    return False
