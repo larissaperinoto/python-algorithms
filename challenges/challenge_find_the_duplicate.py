@@ -1,10 +1,17 @@
+from collections import defaultdict
+
+
 def find_duplicate(nums):
 
-    a = {}
+    a = defaultdict(lambda: 0)
 
     try:
         for num in nums:
-            a.update(create_dict(a, num))
+
+            if int(num) < 0:
+                raise TypeError
+
+            a[num] = a[num] + 1
 
             if a[num] > 1:
                 return num
@@ -14,7 +21,7 @@ def find_duplicate(nums):
         return False
 
 
-def create_dict(a, num):
+""" def create_dict(a, num):
 
     if int(num) < 0:
         raise TypeError
@@ -27,3 +34,4 @@ def create_dict(a, num):
         a[num] = 1
 
     return a
+ """
